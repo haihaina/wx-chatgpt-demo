@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  chatgpt: ^2.1.1
+  chatgpt: ^2.3.0
   dotenv: ^16.0.3
   openai: ^3.1.0
   p-timeout: ^6.0.0
@@ -12,7 +12,7 @@ specifiers:
   wechaty-puppet-wechat: ^1.18.4
 
 dependencies:
-  chatgpt: 2.1.1
+  chatgpt: 2.5.2
   dotenv: 16.0.3
   openai: 3.1.0
   p-timeout: 6.0.0
@@ -703,14 +703,6 @@ packages:
       ieee754: 1.2.1
     dev: false
 
-  /busboy/1.6.0:
-    resolution: {integrity: sha512-8SFQbg/0hQ9xy3UNTB0YEnsNBbWfhf7RtnzpL7TkBiTBRfrQ9Fxcnz7VJsleJpyp6rVLvXiuORqjlHi5q+PYuA==}
-    engines: {node: '>=10.16.0'}
-    dependencies:
-      streamsearch: 1.1.0
-    dev: false
-    optional: true
-
   /camelcase/5.3.1:
     resolution: {integrity: sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==}
     engines: {node: '>=6'}
@@ -741,19 +733,27 @@ packages:
     resolution: {integrity: sha512-yrLQ/yVUFXkzg7EDQsPieE/53+0RlaWTs+wBrvW36cyilJ2SaDWfl4Yj7MtLTXleV9uEKefbAGUPv2/iWSooRA==}
     dev: false
 
-  /chatgpt/2.1.1:
-    resolution: {integrity: sha512-vFSKaDlXUGuBOMDAFkHS7tGuT0NOg7t0Pv0qAN06IcRoThHymDVu+F53p32vSFrFtcNYKSiQZQSgUZRQPbLUZA==}
-    engines: {node: '>=16.8'}
+  /chatgpt/2.5.2:
+    resolution: {integrity: sha512-+6bQtseJYyJjgbWndBx62YV9pstT++6aNqUE9O1L8ob3XVY7b9DLK6BiW9yTHYTCeZrUILC63VVVo3KXLuhuTA==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      puppeteer: '*'
     dependencies:
+      delay: 5.0.0
       eventsource-parser: 0.0.5
       expiry-map: 2.0.0
+      html-to-md: 0.8.3
       p-timeout: 6.0.0
+      puppeteer-extra: 3.3.4
+      puppeteer-extra-plugin-recaptcha: 3.6.6_puppeteer-extra@3.3.4
+      puppeteer-extra-plugin-stealth: 2.11.1_puppeteer-extra@3.3.4
       remark: 14.0.2
       strip-markdown: 5.0.0
       uuid: 9.0.0
-    optionalDependencies:
-      undici: 5.14.0
     transitivePeerDependencies:
+      - '@types/puppeteer'
+      - playwright-extra
+      - puppeteer-core
       - supports-color
     dev: false
 
@@ -962,6 +962,11 @@ packages:
     dependencies:
       abstract-leveldown: 7.2.0
       inherits: 2.0.4
+    dev: false
+
+  /delay/5.0.0:
+    resolution: {integrity: sha512-ReEBKkIfe4ya47wlPYf/gu5ib6yUG0/Aez0JQZQz94kiWtRQvZIQbTiehsnwHvLSWJnQdhVeqYue7Id1dKr0qw==}
+    engines: {node: '>=10'}
     dev: false
 
   /delayed-stream/1.0.0:
@@ -1366,6 +1371,10 @@ packages:
   /has-flag/4.0.0:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
     engines: {node: '>=8'}
+    dev: false
+
+  /html-to-md/0.8.3:
+    resolution: {integrity: sha512-Va+bB1YOdD6vMRDue9/l7YxbERgwOgsos4erUDRfRN6YE0B2Wbbw8uAj6xZJk9A9vrjVy7mG/WLlhDw6RXfgsA==}
     dev: false
 
   /htmlparser2/3.10.1:
@@ -2303,6 +2312,26 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
+  /puppeteer-extra-plugin-recaptcha/3.6.6_puppeteer-extra@3.3.4:
+    resolution: {integrity: sha512-SVbmL+igGX8m0Qg9dn85trWDghbfUCTG/QUHYscYx5XgMZVVb0/v0a6MqbPdHoKmBx5BS2kLd6rorMlncMcXdw==}
+    engines: {node: '>=9.11.2'}
+    peerDependencies:
+      playwright-extra: '*'
+      puppeteer-extra: '*'
+    peerDependenciesMeta:
+      playwright-extra:
+        optional: true
+      puppeteer-extra:
+        optional: true
+    dependencies:
+      debug: 4.3.4
+      merge-deep: 3.0.3
+      puppeteer-extra: 3.3.4
+      puppeteer-extra-plugin: 3.2.2_puppeteer-extra@3.3.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /puppeteer-extra-plugin-stealth/2.11.1_puppeteer-extra@3.3.4:
     resolution: {integrity: sha512-n0wdC0Ilc9tk5L6FWLyd0P2gT8b2fp+2NuB+KB0oTSw3wXaZ0D6WNakjJsayJ4waGzIJFCUHkmK9zgx5NKMoFw==}
     engines: {node: '>=8'}
@@ -2316,7 +2345,7 @@ packages:
         optional: true
     dependencies:
       debug: 4.3.4
-      puppeteer-extra: 3.3.4_puppeteer@13.7.0
+      puppeteer-extra: 3.3.4
       puppeteer-extra-plugin: 3.2.2_puppeteer-extra@3.3.4
       puppeteer-extra-plugin-user-preferences: 2.4.0_puppeteer-extra@3.3.4
     transitivePeerDependencies:
@@ -2337,7 +2366,7 @@ packages:
     dependencies:
       debug: 4.3.4
       fs-extra: 10.1.0
-      puppeteer-extra: 3.3.4_puppeteer@13.7.0
+      puppeteer-extra: 3.3.4
       puppeteer-extra-plugin: 3.2.2_puppeteer-extra@3.3.4
       rimraf: 3.0.2
     transitivePeerDependencies:
@@ -2358,7 +2387,7 @@ packages:
     dependencies:
       debug: 4.3.4
       deepmerge: 4.2.2
-      puppeteer-extra: 3.3.4_puppeteer@13.7.0
+      puppeteer-extra: 3.3.4
       puppeteer-extra-plugin: 3.2.2_puppeteer-extra@3.3.4
       puppeteer-extra-plugin-user-data-dir: 2.4.0_puppeteer-extra@3.3.4
     transitivePeerDependencies:
@@ -2380,7 +2409,29 @@ packages:
       '@types/debug': 4.1.7
       debug: 4.3.4
       merge-deep: 3.0.3
-      puppeteer-extra: 3.3.4_puppeteer@13.7.0
+      puppeteer-extra: 3.3.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /puppeteer-extra/3.3.4:
+    resolution: {integrity: sha512-fN5pHvSMJ8d1o7Z8wLLTQOUBpORD2BcFn+KDs7QnkGZs9SV69hcUcce67vX4L4bNSEG3A0P6Osrv+vWNhhdm8w==}
+    engines: {node: '>=8'}
+    peerDependencies:
+      '@types/puppeteer': '*'
+      puppeteer: '*'
+      puppeteer-core: '*'
+    peerDependenciesMeta:
+      '@types/puppeteer':
+        optional: true
+      puppeteer:
+        optional: true
+      puppeteer-core:
+        optional: true
+    dependencies:
+      '@types/debug': 4.1.7
+      debug: 4.3.4
+      deepmerge: 4.2.2
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -2742,12 +2793,6 @@ packages:
       xstate: 4.35.0
     dev: false
 
-  /streamsearch/1.1.0:
-    resolution: {integrity: sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==}
-    engines: {node: '>=10.0.0'}
-    dev: false
-    optional: true
-
   /string-width/4.2.3:
     resolution: {integrity: sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==}
     engines: {node: '>=8'}
@@ -2882,15 +2927,6 @@ packages:
       buffer: 5.7.1
       through: 2.3.8
     dev: false
-
-  /undici/5.14.0:
-    resolution: {integrity: sha512-yJlHYw6yXPPsuOH0x2Ib1Km61vu4hLiRRQoafs+WUgX1vO64vgnxiCEN9dpIrhZyHFsai3F0AEj4P9zy19enEQ==}
-    engines: {node: '>=12.18'}
-    requiresBuild: true
-    dependencies:
-      busboy: 1.6.0
-    dev: false
-    optional: true
 
   /unified/10.1.2:
     resolution: {integrity: sha512-pUSWAi/RAnVy1Pif2kAoeWNBa3JVrx0MId2LASj8G+7AiHWoKZNTomq6LG326T68U7/e263X6fTdcXIy7XnF7Q==}
